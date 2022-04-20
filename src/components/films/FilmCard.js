@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 
 
 
-export default function MediaCard(props) {
+export default function FilmCard(props) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia

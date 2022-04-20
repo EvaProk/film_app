@@ -1,21 +1,38 @@
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
+import Button from '@mui/material/Button';
+
+
+const SearchWrapper =  styled('div')({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent:"center",
+  marginTop: "2rem",
+  marginBottom: "2rem"
+})
+
+const StyledButton =  styled(Button)({
+  width:"15%",
+  margin: "auto",
+  marginTop: "2rem"
+})
+
 
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: alpha(theme.palette.common.white, 0.35),
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.common.white, 0.65),
   },
   marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: '100%',
+
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
-    width: 'auto',
+    margin: "auto",
+    width: '60%',
+    height: "3rem"
   },
 }));
 
@@ -33,33 +50,36 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
+    padding: theme.spacing(1.5, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch',
+      width: '100%',
     },
   },
 }));
 
 
-const SearchBar = () =>  {
-  
+const SearchBar = ({onChange, value, onClick}) =>  {
     return (
-      <div>
+      <SearchWrapper>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
+              value={value}
+              onChange={onChange}
               inputProps={{ 'aria-label': 'search' }}
             />
+
           </Search>
-     
-      </div>
+          <StyledButton variant="contained" onClick={onClick}>Find</StyledButton>
+
+      </SearchWrapper>
     );
 }
 

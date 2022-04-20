@@ -1,6 +1,11 @@
 import './App.css';
 import React from 'react'
-import FilmList from "../src/components/films/FilmList";
+import Home from "./components/pages/Home";
+
+// import FilmList from "../src/components/films/FilmList";
+// import Navbar from "./components/layout/Navbar";
+// import SearchBar from "./components/films/SearchBar";
+
 
 
 function App() {
@@ -8,9 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <FilmList/>
-
-         
+      <Home/>   
     </div>
   );
 }
