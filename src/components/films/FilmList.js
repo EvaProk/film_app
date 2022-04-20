@@ -1,0 +1,66 @@
+import React, {useState} from "react";
+import FilmCard from "./FilmCard";
+import Stack from '@mui/material/Stack';
+
+import Spinner from "../layout/Spinner.js";;
+
+
+
+const FilmList = () => {
+  const [loading, setLoading] = useState(false)
+
+  const [films, setFilms] = useState([
+    {
+        "Title": "Harry Potter and the Deathly Hallows: Part 2",
+        "Year": "2011",
+        "imdbID": "tt1201607",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMGVmMWNiMDktYjQ0Mi00MWIxLTk0N2UtN2ZlYTdkN2IzNDNlXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg"
+    },
+    {
+        "Title": "Harry Potter and the Goblet of Fire",
+        "Year": "2005",
+        "imdbID": "tt0330373",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTI1NDMyMjExOF5BMl5BanBnXkFtZTcwOTc4MjQzMQ@@._V1_SX300.jpg"
+    },
+    {
+        "Title": "Harry Potter and the Order of the Phoenix",
+        "Year": "2007",
+        "imdbID": "tt0373889",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTM0NTczMTUzOV5BMl5BanBnXkFtZTYwMzIxNTg3._V1_SX300.jpg"
+    },
+    {
+        "Title": "Harry Potter and the Deathly Hallows: Part 1",
+        "Year": "2010",
+        "imdbID": "tt0926084",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTQ2OTE1Mjk0N15BMl5BanBnXkFtZTcwODE3MDAwNA@@._V1_SX300.jpg"
+    },
+    {
+        "Title": "Harry Potter and the Half-Blood Prince",
+        "Year": "2009",
+        "imdbID": "tt0417741",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BNzU3NDg4NTAyNV5BMl5BanBnXkFtZTcwOTg2ODg1Mg@@._V1_SX300.jpg"
+    }
+  ])
+
+  const filmCards = films.map((film) => <FilmCard title={film["Title"]} poster={film["Poster"]} year={film["Year"]}/>);
+ 
+  if (loading) {
+    return <Spinner/>
+  } else {
+    return <Stack
+    direction="row"
+    justifyContent="space-evenly"
+    alignItems="center"
+    spacing={2}
+  > {filmCards}
+   </Stack>
+  }
+
+};
+
+export default FilmList;
