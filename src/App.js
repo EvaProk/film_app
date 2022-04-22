@@ -18,6 +18,8 @@ function App() {
     filmKey = process.env.SECRET
   }
 
+  console.log(process.env);
+
   const handleChange = (event) => {
     setValue(event.target.value)
   }
