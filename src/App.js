@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import FilmDetails from './components/films/FilmDetails'
 import axios from 'axios'
 
+
+
 function App() {
   const [loading, setLoading] = useState(false)
   const [filmDetails, setFilmDetails] = useState({})
@@ -12,7 +14,11 @@ function App() {
   const [value, setValue] = useState('')
   const [alert, setAlert] = useState('')
 
-  const filmKey = process.env.REACT_APP_SECRET
+  let filmKey = process.env.REACT_APP_SECRET
+
+if (process.env.NODE_ENV === 'production') {
+  filmKey = process.env.SECRET
+} 
 
   const handleChange = (event) => {
     setValue(event.target.value)

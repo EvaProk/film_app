@@ -4,17 +4,14 @@ Film Finder is a web app that finds films using OMDB API.
 ## Description and screenshots
 1. You can Search movies by name and vie details about selected films. Yop can clear the search or search for a different movie
 
-![]()
-![]()  
+![](https://github.com/EvaProk/film_app/blob/main/media/general.gif)
+![](https://github.com/EvaProk/film_app/blob/main/media/rerenders.gif)  
 
 2. If the movie is not found, Alert message will pop out
-! []()
+![](https://github.com/EvaProk/film_app/blob/main/media/alert.gif)
 
 3. App is adapted to mobile, tablet and larger screens. 
-! []()
-## Live Website
-
-You can view the website [here]()
+![](https://github.com/EvaProk/film_app/blob/main/media/responsive.gif)
 
 ## Tech Stack
 - JavaScript
