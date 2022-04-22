@@ -1,36 +1,35 @@
-import React, {useState} from 'react';
+import React ,{useState} from 'react';
+import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
-import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
 import Collapse from '@mui/material/Collapse';
-
-
-
-
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function AlertMessage(props) {
-  const [open, setOpen] = useState(false);
-
-  const handleClose =()=>{
-    setOpen(true)
-  }
-  
+  const [open, setOpen] = useState(true);
 
   return (
-    <Stack sx={{ width: '60%', margin: "auto" }} spacing={2}>
-
-      <Alert severity="error" action={
+    <Box sx={{ width: '60%', margin: "auto" }}>
+      <Collapse in={open}>
+        <Alert
+          severity="error"
+          action={
             <IconButton
-            open={open}
               aria-label="close"
               color="inherit"
               size="small"
-              onClick={handleClose}
+              onClick={() => {
+                setOpen(false);
+              }}
             >
               <CloseIcon fontSize="inherit" />
             </IconButton>
-          } >{props.message}</Alert>
-    </Stack>
+          }
+          sx={{ mb: 2 }}
+        >
+         {props.message} Try again, please!
+        </Alert>
+      </Collapse>     
+    </Box>
   );
 }

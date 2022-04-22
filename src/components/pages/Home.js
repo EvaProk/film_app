@@ -62,8 +62,9 @@ const searchFilms = () => {
     <> 
     <StyledHome >
       <Navbar/>
-      { alert? <AlertMessage message={alert}/> : null}
+      
       <SearchBar value={value} onChange={handleChange} onClick={searchFilms} films={films} onClear={onClear} alert={alert}/>
+      { alert? <AlertMessage message={alert}/> : null}
       {/* <FilmList films={films} loading={loading} /> */}
       {/* <FilmDetails/> */}  
     </StyledHome>
