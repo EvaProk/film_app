@@ -81,7 +81,6 @@ const SearchBar = ({onChange, value, onClick, films, onClear}) =>  {
               onChange={onChange}
               inputProps={{ 'aria-label': 'search' }}
             />
-
           </Search>
           <StyledButton variant="contained" onClick={onClick}>Find</StyledButton>
           {films?.length > 0 && (

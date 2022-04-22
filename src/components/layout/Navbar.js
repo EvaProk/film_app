@@ -1,6 +1,6 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined';
+import { Link } from "react-router-dom";
 import { styled } from '@mui/system';
 import Typography from '@mui/material/Typography';
 
@@ -17,24 +17,17 @@ const StyledNavbar = styled("div")({
 
 })
 
-const StyledIcon = styled(LiveTvOutlinedIcon)({
-  padding: "2rem",
-
-})
-
-
 
 const Navbar = ()=> {
 
     return (
+      
       <StyledNavbar >
-        {/* <Link to="/"> */}
-        {/* <StyledIcon /> */}
-
+        <Link to="/">
         <StyledTypography variant="h2">
           Film Finder
         </StyledTypography>
-        
+        </Link>
       </StyledNavbar>
     );
 }

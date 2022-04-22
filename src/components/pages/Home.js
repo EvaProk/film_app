@@ -1,11 +1,9 @@
-import React,{ useState, useEffect } from 'react'
+import React from 'react'
 import Navbar from "../layout/Navbar";
 import AlertMessage from "./../layout/Alert";
 import SearchBar from "../films/SearchBar";
 import FilmList from "../films/FilmList";
-import FilmDetails from "../films/FilmDetails";
 import background from "../pages/background.jpg"
-import axios from "axios" 
 import { styled } from '@mui/system';
 
 
@@ -21,52 +19,15 @@ const StyledHome = styled('div')(({ theme }) => ({
   },
 }));
 
-function Home() {
-  const [loading, setLoading] = useState(false)
-  const [films, setFilms] = useState([])
-  const [value, setValue] = useState("")
-  const [alert, setAlert] = useState("")
-
-
-const handleChange = (event) =>{
-  setValue(event.target.value)
-}
- 
- //Search films 
-const searchFilms = () => {
-  setLoading(true)
+function Home({handleChange, searchFilms, films, onClear, alert , loading, value}) {
   
-  axios
-    .get(
-      `http://www.omdbapi.com/?s=${value.trim()}&apikey=6f39550d`
-    )
-    .then((res) => {
-
-      if(res.data.Error){
-        setFilms([])
-        setAlert(res.data.Error);  
-        setLoading(false)
-      }
-      setFilms(res.data.Search)  
-      setLoading(false)
-    })
-    .catch(error => {
-      console.log(error)
-    })
-};
-
- //Clear Search results
-  const onClear = () => setFilms([])
  
   return (
     <> 
     <StyledHome >
       <Navbar/>
-      
       <SearchBar value={value} onChange={handleChange} onClick={searchFilms} films={films} onClear={onClear} alert={alert}/>
-      { alert? <AlertMessage message={alert}/> : null}
-      {/* <FilmList films={films} loading={loading} /> */}
-      {/* <FilmDetails/> */}  
+      { alert? <AlertMessage message={alert}/> : null} 
     </StyledHome>
     <FilmList films={films} loading={loading} />
    </>

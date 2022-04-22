@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import FilmCard from "./FilmCard";
 import Grid from '@mui/material/Grid';
 import Spinner from "../layout/Spinner.js";
