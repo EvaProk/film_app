@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import FilmDetails from './components/films/FilmDetails'
 import axios from 'axios'
 
-
-
 function App() {
   const [loading, setLoading] = useState(false)
   const [filmDetails, setFilmDetails] = useState({})
@@ -16,9 +14,9 @@ function App() {
 
   let filmKey = process.env.REACT_APP_SECRET
 
-if (process.env.NODE_ENV === 'production') {
-  filmKey = process.env.SECRET
-} 
+  if (process.env.NODE_ENV === 'production') {
+    filmKey = process.env.SECRET
+  }
 
   const handleChange = (event) => {
     setValue(event.target.value)
@@ -29,7 +27,7 @@ if (process.env.NODE_ENV === 'production') {
     setLoading(true)
 
     axios
-      .get(`http://www.omdbapi.com/?s=${value.trim()}&apikey=${filmKey}`)
+      .get(`https://www.omdbapi.com/?s=${value.trim()}&apikey=${filmKey}`)
       .then((res) => {
         if (res.data.Error) {
           setFilms([])
@@ -56,7 +54,7 @@ if (process.env.NODE_ENV === 'production') {
   const getFilm = (imdbID) => {
     setLoading(true)
     axios
-      .get(`http://www.omdbapi.com/?i=${imdbID}&apikey=${filmKey}`)
+      .get(`https://www.omdbapi.com/?i=${imdbID}&apikey=${filmKey}`)
       .then((res) => {
         setFilmDetails(res.data)
         setLoading(false)
