@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 
 // import PropTypes from 'prop-types'
 const StyledTypography = styled(Typography)({
-  fontSize: "3rem",
+  fontSize: "2rem",
   margin: "auto 0 auto"
 })
 const StyledNavbar = styled("div")({

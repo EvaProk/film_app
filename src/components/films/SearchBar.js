@@ -8,17 +8,21 @@ const SearchWrapper =  styled('div')({
   display: "flex",
   flexDirection: "column",
   justifyContent:"center",
-  marginTop: "2rem",
+  marginTop: "6rem",
   marginBottom: "2rem"
 })
 
-const StyledButton =  styled(Button)({
-  width:"15%",
-  margin: "auto",
-  marginTop: "2rem"
-})
-
-
+const StyledButton =  styled(Button)(({ theme }) => ({
+    width:"50%",
+    margin: "auto",
+    marginTop: "2rem",
+  
+  [theme.breakpoints.up('sm')]: {
+    width:"30%",
+    margin: "auto",
+    marginTop: "2rem"
+  },
+}));
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -28,7 +32,9 @@ const Search = styled('div')(({ theme }) => ({
     backgroundColor: alpha(theme.palette.common.white, 0.65),
   },
   marginRight: theme.spacing(2),
-
+  margin: "auto",
+    width: '80%',
+    height: "3rem",
   [theme.breakpoints.up('sm')]: {
     margin: "auto",
     width: '60%',
@@ -62,7 +68,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-const SearchBar = ({onChange, value, onClick}) =>  {
+const SearchBar = ({onChange, value, onClick, films, onClear}) =>  {
     return (
       <SearchWrapper>
           <Search>
@@ -78,7 +84,9 @@ const SearchBar = ({onChange, value, onClick}) =>  {
 
           </Search>
           <StyledButton variant="contained" onClick={onClick}>Find</StyledButton>
-
+          {films?.length > 0 && (
+          <StyledButton variant="outlined" onClick={onClear}>Clear Search</StyledButton>
+          )}
       </SearchWrapper>
     );
 }

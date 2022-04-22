@@ -1,28 +1,24 @@
 import React, {useState, useEffect} from "react";
 import FilmCard from "./FilmCard";
-import Stack from '@mui/material/Stack';
-// import axios from "axios" 
+import Grid from '@mui/material/Grid';
+import Spinner from "../layout/Spinner.js";
+import { styled } from '@mui/system';
 
 
-import Spinner from "../layout/Spinner.js";;
+const StyledGrid = styled(Grid)({
+  padding: "2rem"
+})
 
-
-
-const FilmList = ({films , loading}) => {
+const FilmList = ({films , loading, onClick}) => {
   
-
-  const filmCards = films?.map((film) => <FilmCard title={film["Title"]} poster={film["Poster"]} year={film["Year"]}/>);
+  const filmCards = films?.map((film) => <Grid item xs={12} sm={6} md={3} xl={2}> <FilmCard title={film.Title} poster={film.Poster} year={film.Year} imdbID={film.imdbID} onClick={onClick}/></Grid>);
  
-  if (!films) {
+  if (loading) {
     return <Spinner/>
   } else {
-    return <Stack
-    direction="row"
-    justifyContent="space-evenly"
-    alignItems="center"
-    spacing={2}
-  > {filmCards}
-   </Stack>
+    return  <StyledGrid container rowSpacing={5} spacing={4}>
+       {filmCards}
+        </StyledGrid>
   }
 
 };
