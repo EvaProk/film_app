@@ -14,10 +14,6 @@ function App() {
 
   let filmKey = process.env.REACT_APP_SECRET
 
-  if (process.env.NODE_ENV === 'production') {
-    filmKey = process.env.SECRET
-  }
-
   const handleChange = (event) => {
     setValue(event.target.value)
   }
